@@ -19,7 +19,7 @@ rl.on('line', (line) => {
             hasil += (perkata[i].slice(1) + perkata[i].charAt(0) + 'nyo ');
         }
     }
-    console.log(hasil);
+    console.log(`hasil konversi: ${hasil}`);
   rl.prompt();
 }).on('close', () => {
   console.log('Good bye');
