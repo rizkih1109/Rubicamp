@@ -11,7 +11,6 @@ const rl = readline.createInterface({
 });
 
 object.push({'definition':'Sebutkan kota yang memiliki julukan kota Intan?','term':'garut'});
-fs.writeFileSync('./data.json', JSON.stringify(object));
 
 console.log('Selamat datang di permainan Tebak Kata, silahkan isi dengan jawaban yang benar ya?');
 console.log(`Pertanyaan: ${object[start].definition}`)
