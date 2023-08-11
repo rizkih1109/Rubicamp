@@ -1,17 +1,3 @@
-CREATE TABLE mahasiswa(
-    nim VARCHAR(3) PRIMARY KEY NOT NULL,
-    nama VARCHAR(100) NOT NULL,
-    alamat VARCHAR(200) NOT NULL,
-    jurusan VARCHAR(30) NOT NULL
-);
-
-INSERT INTO mahasiswa (nim, nama, alamat, jurusan) VALUES
-("001", "Ahmad Rifai", "Kuningan", "Matematika"),
-("002", "Ghifari Gilman", "Sumedang", "Biologi"),
-("003", "Rasyid Fasha", "Bandung", "Fisika"),
-("004", "Syifa Fauziah", "Bandung", "Matematika"),
-("005", "Andini Nurfadilah", "Cimahi", "Fisika");
-
 CREATE TABLE jurusan(
     idjurusan VARCHAR(3) PRIMARY KEY NOT NULL,
     namajurusan VARCHAR(30) NOT NULL
@@ -20,20 +6,36 @@ CREATE TABLE jurusan(
 INSERT INTO jurusan (idjurusan, namajurusan) VALUES
 ("J01", "Matematika"),
 ("J02", "Biologi"),
-("J03", "Kimia");
+("J03", "Fisika");
 
-UPDATE jurusan SET namajurusan="Fisika" WHERE idjurusan="J03";
+CREATE TABLE mahasiswa(
+    nim VARCHAR(3) PRIMARY KEY NOT NULL,
+    nama VARCHAR(100) NOT NULL,
+    alamat VARCHAR(200) NOT NULL,
+    jurusan VARCHAR(30) NOT NULL,
+    idjurusan VARCHAR(3) NOT NULL,
+    FOREIGN KEY (idjurusan) REFERENCES jurusan(idjurusan)
+);
+
+INSERT INTO mahasiswa (nim, nama, alamat, jurusan, idjurusan) VALUES
+("001", "Ahmad Rifai", "Kuningan", "Matematika", "J01"),
+("002", "Ghifari Gilman", "Sumedang", "Biologi", "J02"),
+("003", "Rasyid Fasha", "Bandung", "Fisika", "J03"),
+("004", "Syifa Fauziah", "Bandung", "Matematika", "J01"),
+("005", "Andini Nurfadilah", "Cimahi", "Fisika", "J03");
 
 CREATE TABLE dosen(
     nip VARCHAR(6) PRIMARY KEY NOT NULL,
-    dosen VARCHAR(100) NOT NULL
+    namadosen VARCHAR(100) NOT NULL,
+    idjurusan VARCHAR(3) NOT NULL,
+    FOREIGN KEY (idjurusan) REFERENCES jurusan(idjurusan)
 );
 
-INSERT INTO dosen (nip, dosen) VALUES
-("MAT001", "Syamsudin"),
-("MAT002", "Dedi Kusuma"),
-("BIO001", "Susilawati"),
-("FIS001", "Dindin Nasruddin");
+INSERT INTO dosen (nip, namadosen, idjurusan) VALUES
+("MAT001", "Syamsudin", "J01"),
+("MAT002", "Dedi Kusuma", "J01"),
+("BIO001", "Susilawati", "J02"),
+("FIS001", "Dindin Nasruddin", "J03");
 
 CREATE TABLE matakuliah(
     idmatakuliah VARCHAR(4) PRIMARY KEY NOT NULL,
@@ -59,7 +61,6 @@ CREATE TABLE kontrak(
     FOREIGN KEY (nip) REFERENCES dosen(nip),
     FOREIGN KEY (idmatakuliah) REFERENCES matakuliah(idmatakuliah)
 );
-
 
 INSERT INTO kontrak (idkontrak, nim, idjurusan, nip, idmatakuliah, nilai) VALUES
 ("K01", "001", "J01", "MAT001", "M001", "A"),
