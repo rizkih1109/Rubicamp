@@ -17,12 +17,12 @@ CREATE TABLE mahasiswa(
     FOREIGN KEY (idjurusan) REFERENCES jurusan(idjurusan)
 );
 
-INSERT INTO mahasiswa (nim, nama, alamat, jurusan, idjurusan) VALUES
-("001", "Ahmad Rifai", "Kuningan", "Matematika", "J01"),
-("002", "Ghifari Gilman", "Sumedang", "Biologi", "J02"),
-("003", "Rasyid Fasha", "Bandung", "Fisika", "J03"),
-("004", "Syifa Fauziah", "Bandung", "Matematika", "J01"),
-("005", "Andini Nurfadilah", "Cimahi", "Fisika", "J03");
+INSERT INTO mahasiswa (nim, nama, alamat, idjurusan) VALUES
+("001", "Ahmad Rifai", "Kuningan", "J01"),
+("002", "Ghifari Gilman", "Sumedang", "J02"),
+("003", "Rasyid Fasha", "Bandung",  "J03"),
+("004", "Syifa Fauziah", "Bandung", "J01"),
+("005", "Andini Nurfadilah", "Cimahi", "J03");
 
 CREATE TABLE dosen(
     nip VARCHAR(6) PRIMARY KEY NOT NULL,
