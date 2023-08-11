@@ -12,7 +12,6 @@ CREATE TABLE mahasiswa(
     nim VARCHAR(3) PRIMARY KEY NOT NULL,
     nama VARCHAR(100) NOT NULL,
     alamat VARCHAR(200) NOT NULL,
-    jurusan VARCHAR(30) NOT NULL,
     idjurusan VARCHAR(3) NOT NULL,
     FOREIGN KEY (idjurusan) REFERENCES jurusan(idjurusan)
 );
