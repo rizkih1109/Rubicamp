@@ -33,7 +33,7 @@ if (!command || command.toLowerCase() == 'help') {
                 }
             } break;
         case "task":
-            for (let i in Oindex) console.log(`${i}: ${object[Oindex][i]}`)
+            for (let i in object[Oindex]) console.log(`${i}: ${object[Oindex][i]}`)
             break;
         case "add":
             if (submit) {
