@@ -4,14 +4,10 @@ function weirdMultiple(num) {
         return num;
     }
 
-    const A = num.toString().split('');
+    const A = num.toString();
     let hasil = 1;
-
-    for (let i = 0; i < A.length; i++) {
-        hasil *= A[i]
-    }
+    for (let i = 0; i < A.length; i++) hasil *= A[i]
     return weirdMultiple(hasil);
-
 } 
 
 console.log(weirdMultiple(39));
