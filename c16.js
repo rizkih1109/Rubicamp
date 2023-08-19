@@ -14,7 +14,6 @@ class Car extends Tyre {
         this.varian = varian; this.sn = sn; this.door = door
         this.seat = seat; this.warranty = warranty; this. year = year
     }
-
 }
 
 class Agya extends Car {}
