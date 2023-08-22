@@ -22,16 +22,11 @@ if (!command || command.toLowerCase() == 'help') {
 } else {
     switch (command.toLowerCase()) {
         case "list":
-            console.log("Daftar Pekerjaan")
-            for (let i of object) {
-                if (i.complete) {
-                    i.complete = "[x]"
-                    console.log(`${i.ID}. ${i.complete} ${i.title}.`)
-                } else if (!i.complete) {
-                    i.complete = "[ ]"
-                    console.log(`${i.ID}. ${i.complete} ${i.title}.`)
-                }
-            } break;
+            console.log('Daftar Pekerjaan')
+            object.forEach((item, index) => {
+                console.log(`${index + 1}. [${item.complete ? "x" : " "}] ${item.title}`)
+            }); 
+            break;
         case "task":
             for (let i in object[Oindex]) console.log(`${i}: ${object[Oindex][i]}`)
             break;
