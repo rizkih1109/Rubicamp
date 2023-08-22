@@ -86,9 +86,9 @@ if (!command || command.toLowerCase() == 'help') {
             console.log(`Tag ${process.argv.slice(4)} telah ditambahkan ke dalam daftar '${object[object.findIndex(i => i.ID == id)].title}'`);
             object[Oindex].tag = process.argv.slice(4);
             fs.writeFileSync('./Todo.json', JSON.stringify(object), 'utf-8');
-        case "filter":
+            break;
+        case `filter:${command.slice(7)}`:
             console.log('Daftar Pekerjaan');
-            console.log(command.slice(7));
             for (let i of object) {
                 if (i.tag.includes(command.slice(7))) {
                     if (i.complete) {
