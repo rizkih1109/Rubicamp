@@ -2,40 +2,34 @@ import { db } from './connect.js'
 
 export default class Jurusan {
     constructor(obj) {
-        this.kodejurusan = obj.kodejurusan
-        this.namajurusan = obj.namajurusan
-    }
+        this.kodejurusan = obj.kodejurusan; this.namajurusan = obj.namajurusan
+    };
 
-    save(next) {
-        db.run('INSERT INTO jurusan (kodejurusan, namajurusan) VALUES (?, ?)', [this.kodejurusan, this.namajurusan], (err) => {
-            if (err) console.log(err)
-            next()
-        })
-    }
+    save() {
+            db.run('INSERT INTO jurusan (kodejurusan, namajurusan) VALUES (?, ?)', [this.kodejurusan, this.namajurusan], (err) => {
+                if (err) console.log(err)
+            })
+           }
 
     static find(next) {
-        let sql = 'SELECT * FROM jurusan'
-        db.all(sql, (err, rows) => {
+        db.all('SELECT * FROM jurusan', (err, data) => {
             if (err) console.log(err)
-            next(rows)
+            next(data)
         })
     }
 
     static look(kodejurusan) {
         return new Promise(function (resolve, reject) {
             db.get('SELECT * FROM jurusan WHERE kodejurusan = ?', [kodejurusan], (err, data) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve(data)
-                }
+                if (err) reject(err)
+                 else resolve(data)
             })
         })
     }
 
-    static create(kodejurusan, namajurusan) {
-        const databaru = new Jurusan({kodejurusan: kodejurusan, namajurusan: namajurusan})
-        return Jurusan.save()
+    static create(kodejurusan, nama) {
+        const databaru = new Jurusan({kodejurusan: kodejurusan, namajurusan: nama})
+        return databaru.save()
     }
 
     static delete(kodejurusan) {
@@ -49,5 +43,4 @@ export default class Jurusan {
             })
         })
     }
-
 }

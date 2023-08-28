@@ -1,12 +1,14 @@
-import readline from 'readline'
 import JurusanController from './controllers/JurusanController.js';
+import { rl } from './models/connect.js';
 
-export const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-})
+export function barrier() {
+    let line = ''
+    for (let i = 0; i < 100; i++) line += '='
+    return console.log(line)
+}
 
 export function showMenu() {
+    barrier()
     console.log(`
 Silahkan pilih opsi di bawah ini : 
 [1] Mahasiswa
@@ -16,7 +18,7 @@ Silahkan pilih opsi di bawah ini :
 [5] Kontrak
 [6] Keluar
 `);
-
+    barrier()
     rl.question(`Masukkan salah satu nomor dari opsi di atas : `, (answer) => {
         switch (answer) {
             case '1':

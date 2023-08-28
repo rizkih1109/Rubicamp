@@ -1,4 +1,5 @@
 import Table from 'cli-table'
+import { barrier } from '../university.js';
 
 export function show(data = []) {
     var table = new Table({
@@ -14,6 +15,7 @@ export function show(data = []) {
 }
 
 export function submenu() {
+    barrier()
     console.log(`
     Silahkan pilih opsi di bawah ini :
     [1] Daftar Jurusan
@@ -22,6 +24,7 @@ export function submenu() {
     [4] Hapus Jurusan
     [5] Kembali
             `)
+    barrier()
 }
 
 export function showSearch(data) {

@@ -1,5 +1,6 @@
 import Jurusan from '../models/Jurusan.js'
-import { rl, showMenu } from '../university.js'
+import { showMenu } from '../university.js'
+import { rl } from '../models/connect.js' 
 import { show, showSearch, submenu } from '../views/JurusanView.js'
 
 export default class JurusanController {
@@ -49,28 +50,39 @@ export default class JurusanController {
                 JurusanController.search()
             }
         })
-
     }
 
     static add() {
         console.log(`Lengkapi data di bawah ini :`)
         Jurusan.find(function (data) {
             show(data)
+            rl.question(`Kode Jurusan : `, async (kodejurusan) => {
+                rl.question(`Nama Jurusan : `, async (namajurusan) => {
+                    if (await Jurusan.look(kodejurusan)) {
+                        console.log(`Kode Jurusan telah tersedia di database, silahkan coba lagi.`)
+                        JurusanController.menu()
+                    } else {
+                        Jurusan.create(kodejurusan, namajurusan);
+                        console.log(`Jurusan telah ditambahkan ke database`)
+                        JurusanController.menu()
+                    }
+                })
+            })
         })
-
     }
 
     static delete() {
-        rl.question(`Masukkan Kode Jurusan : `, (answer) => {
-            
-            Jurusan.delete(answer).then(() => {
-                console.log(`Data Jurusan ${answer} telah dihapus`)
-                JurusanController.menu()
-            }).catch((err) => {
+        rl.question(`Masukkan Kode Jurusan : `, async (kodejurusan) => {
+            const jurusan = await Jurusan.look(kodejurusan)
+            if(jurusan) {
+                Jurusan.delete(kodejurusan).then(() => {
+                    console.log(`Data Jurusan ${kodejurusan} telah dihapus`)
+                    JurusanController.menu()
+                })
+            } else {
                 console.log(`Kode Jurusan yang Anda masukkan tidak terdaftar, silahkan coba lagi`)
-                JurusanController.menu()
-            })
+                    JurusanController.menu()
+            }
         })
-
     }
 }
