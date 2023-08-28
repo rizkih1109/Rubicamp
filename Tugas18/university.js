@@ -1,3 +1,4 @@
+import DosenController from './controllers/DosenController.js';
 import JurusanController from './controllers/JurusanController.js';
 import { rl } from './models/connect.js';
 
@@ -28,7 +29,7 @@ Silahkan pilih opsi di bawah ini :
                 JurusanController.menu();
                 break;
             case '3':
-                console.log('Dosen menu')
+                DosenController.menu();
                 break;
             case '4':
                 console.log('Mata Kuliah menu')
