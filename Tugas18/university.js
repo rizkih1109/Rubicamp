@@ -1,5 +1,6 @@
 import DosenController from './controllers/DosenController.js';
 import JurusanController from './controllers/JurusanController.js';
+import MatakuliahController from './controllers/MatakuliahController.js';
 import { rl } from './models/connect.js';
 
 export function barrier() {
@@ -32,7 +33,7 @@ Silahkan pilih opsi di bawah ini :
                 DosenController.menu();
                 break;
             case '4':
-                console.log('Mata Kuliah menu')
+                MatakuliahController.menu()
                 break;
             case '5':
                 console.log('Kontrak menu')

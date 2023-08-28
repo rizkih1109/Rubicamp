@@ -80,7 +80,7 @@ export default class DosenController {
                     DosenController.menu()
                 })
             } else {
-                console.log(`Kode Jurusan yang Anda masukkan tidak terdaftar, silahkan coba lagi`)
+                console.log(`NIP Dosen yang Anda masukkan tidak terdaftar, silahkan coba lagi`)
                     DosenController.menu()
             }
         })
