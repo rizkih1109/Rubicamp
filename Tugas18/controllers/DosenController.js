@@ -40,7 +40,7 @@ export default class DosenController {
     }
 
     static search() {
-        rl.question(`Masukkan NIP : `, async (answer) => {
+        rl.question(`Masukkan NIP Dosen : `, async (answer) => {
             try {
             const data = await Dosen.look(answer)
             showSearch(data)

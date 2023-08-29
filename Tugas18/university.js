@@ -1,5 +1,6 @@
 import DosenController from './controllers/DosenController.js';
 import JurusanController from './controllers/JurusanController.js';
+import MahasiswaController from './controllers/MahasiswaController.js';
 import MatakuliahController from './controllers/MatakuliahController.js';
 import { rl } from './models/connect.js';
 
@@ -24,7 +25,7 @@ Silahkan pilih opsi di bawah ini :
     rl.question(`Masukkan salah satu nomor dari opsi di atas : `, (answer) => {
         switch (answer) {
             case '1':
-                console.log('Mahasiswa menu')
+                MahasiswaController.menu();
                 break;
             case '2':
                 JurusanController.menu();
@@ -33,7 +34,7 @@ Silahkan pilih opsi di bawah ini :
                 DosenController.menu();
                 break;
             case '4':
-                MatakuliahController.menu()
+                MatakuliahController.menu();
                 break;
             case '5':
                 console.log('Kontrak menu')
