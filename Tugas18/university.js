@@ -3,12 +3,21 @@ import JurusanController from './controllers/JurusanController.js';
 import KontrakController from './controllers/KontrakController.js';
 import MahasiswaController from './controllers/MahasiswaController.js';
 import MatakuliahController from './controllers/MatakuliahController.js';
+import LoginController from './controllers/LoginController.js';
 import { rl } from './models/connect.js';
 
 export function barrier() {
     let line = ''
     for (let i = 0; i < 100; i++) line += '='
     return console.log(line)
+}
+
+export function welcome() {
+    barrier()
+    console.log('Welcome to Universitas Pendidikan Indonesia\nJl. Setiabudi No. 225')
+    barrier()
+
+    LoginController.login();
 }
 
 export function showMenu() {
@@ -50,4 +59,5 @@ Silahkan pilih opsi di bawah ini :
     })
 }
 
-showMenu()
+welcome()
+
