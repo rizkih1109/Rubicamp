@@ -116,19 +116,19 @@ UPDATE mahasiswa SET Lahir="2000-02-28" WHERE nim="006";
 .headers on
 .mode column
 
--- Tugas 1 
+-- Tugas 1 (coba pake left join)
 SELECT *,(SELECT namajurusan FROM jurusan WHERE jurusan.idjurusan=mahasiswa.idjurusan) AS nama_jurusan FROM mahasiswa;
 
--- Tugas 2
+-- Tugas 2 (coba pake str)
 SELECT *,DATE("now")-DATE(Lahir) AS umur FROM mahasiswa WHERE umur<20;
 
--- Tugas 3
+-- Tugas 3 (coba pake or sama in)
 SELECT DISTINCT nim,(SELECT nama FROM mahasiswa WHERE mahasiswa.nim=kontrak.nim) AS nama FROM kontrak WHERE nilai<="B";
 
 -- Tugas 4
 SELECT nim, (SELECT nama FROM mahasiswa WHERE mahasiswa.nim=kontrak.nim) AS nama, SUM((SELECT sks FROM matakuliah WHERE matakuliah.idmatakuliah=kontrak.idmatakuliah)) AS sks FROM kontrak GROUP BY nim HAVING sks<10;
 
--- Tugas 5
+-- Tugas 5 (coba pake like)
 SELECT nim, (SELECT nama FROM mahasiswa WHERE mahasiswa.nim=kontrak.nim) AS nama FROM kontrak WHERE idmatakuliah="MK07";
 
 -- Tugas 6
@@ -139,3 +139,5 @@ SELECT *,DATE("now")-DATE(Lahir) AS umur FROM mahasiswa ORDER BY umur;
 
 -- Tugas 8
 SELECT * FROM kontrak JOIN mahasiswa on kontrak.nim=mahasiswa.nim JOIN jurusan on kontrak.idjurusan=jurusan.idjurusan JOIN dosen on kontrak.nip=dosen.nip WHERE nilai>="D";
+
+
