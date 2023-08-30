@@ -1,7 +1,7 @@
 import Dosen from '../models/Dosen.js'
 import { showMenu } from '../university.js'
 import { rl } from '../models/connect.js' 
-import { show, showSearch, submenu } from '../views/DosenView.js'
+import { showDosen, showSearch, submenu } from '../views/DosenView.js'
 
 export default class DosenController {
 
@@ -34,7 +34,7 @@ export default class DosenController {
 
     static list() {
         Dosen.find(function (data) {
-            show(data)
+            showDosen(data)
             DosenController.menu()
         })
     }
@@ -55,7 +55,7 @@ export default class DosenController {
     static add() {
         console.log(`Lengkapi data di bawah ini :`)
         Dosen.find(function (data) {
-            show(data)
+            showDosen(data)
             rl.question(`NIP Dosen : `, async (nip) => {
                 rl.question(`Nama Dosen : `, async (namadosen) => {
                     if (await Dosen.look(nip)) {

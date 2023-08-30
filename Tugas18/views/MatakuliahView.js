@@ -1,7 +1,7 @@
 import Table from 'cli-table'
 import { barrier } from '../university.js';
 
-export function show(data = []) {
+export function showMatkul(data = []) {
     var table = new Table({
         head: ['Kode Mata Kuliah', 'Mata Kuliah', 'Jumlah SKS']
       , colWidths: [15, 40, 15]

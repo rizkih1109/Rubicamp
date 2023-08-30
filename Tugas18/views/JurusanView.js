@@ -1,7 +1,7 @@
 import Table from 'cli-table'
 import { barrier } from '../university.js';
 
-export function show(data = []) {
+export function showJurusan(data = []) {
     var table = new Table({
         head: ['Kode Jurusan', 'Nama Jurusan']
       , colWidths: [15, 30]

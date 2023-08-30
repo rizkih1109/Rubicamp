@@ -1,7 +1,7 @@
 import Matakuliah from '../models/Matakuliah.js'
 import { showMenu } from '../university.js'
 import { rl } from '../models/connect.js' 
-import { show, showSearch, submenu } from '../views/MataKuliahView.js'
+import { showMatkul, showSearch, submenu } from '../views/MataKuliahView.js'
 
 export default class MatakuliahController {
 
@@ -34,7 +34,7 @@ export default class MatakuliahController {
 
     static list() {
         Matakuliah.find(function (data) {
-            show(data)
+            showMatkul(data)
             MatakuliahController.menu()
         })
     }
@@ -55,7 +55,7 @@ export default class MatakuliahController {
     static add() {
         console.log(`Lengkapi data di bawah ini :`)
         Matakuliah.find(function (data) {
-            show(data)
+            showMatkul(data)
             rl.question(`ID Mata Kuliah : `, async (idmatkul) => {
                 rl.question(`Nama Mata Kuliah : `, async (matkul) => {
                     rl.question(`Jumlah SKS : `, async (sks) => {

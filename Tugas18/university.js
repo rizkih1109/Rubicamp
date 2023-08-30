@@ -1,5 +1,6 @@
 import DosenController from './controllers/DosenController.js';
 import JurusanController from './controllers/JurusanController.js';
+import KontrakController from './controllers/KontrakController.js';
 import MahasiswaController from './controllers/MahasiswaController.js';
 import MatakuliahController from './controllers/MatakuliahController.js';
 import { rl } from './models/connect.js';
@@ -37,7 +38,7 @@ Silahkan pilih opsi di bawah ini :
                 MatakuliahController.menu();
                 break;
             case '5':
-                console.log('Kontrak menu')
+                KontrakController.menu();
                 break;
             case '6':
                 process.exit(0);

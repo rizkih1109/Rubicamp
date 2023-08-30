@@ -1,7 +1,7 @@
 import Jurusan from '../models/Jurusan.js'
 import { showMenu } from '../university.js'
 import { rl } from '../models/connect.js' 
-import { show, showSearch, submenu } from '../views/JurusanView.js'
+import { showJurusan, showSearch, submenu } from '../views/JurusanView.js'
 
 export default class JurusanController {
 
@@ -34,7 +34,7 @@ export default class JurusanController {
 
     static list() {
         Jurusan.find(function (data) {
-            show(data)
+            showJurusan(data)
             JurusanController.menu()
         })
     }
@@ -55,7 +55,7 @@ export default class JurusanController {
     static add() {
         console.log(`Lengkapi data di bawah ini :`)
         Jurusan.find(function (data) {
-            show(data)
+            showJurusan(data)
             rl.question(`Kode Jurusan : `, async (kodejurusan) => {
                 rl.question(`Nama Jurusan : `, async (namajurusan) => {
                     if (await Jurusan.look(kodejurusan)) {

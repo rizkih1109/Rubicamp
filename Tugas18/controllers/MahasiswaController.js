@@ -1,6 +1,6 @@
 import Mahasiswa from '../models/Mahasiswa.js'
 import Jurusan from '../models/Jurusan.js'
-import { show } from '../views/JurusanView.js'
+import { showJurusan } from '../views/JurusanView.js'
 import { showMenu } from '../university.js'
 import { rl } from '../models/connect.js'
 import { showMahasiswa, showSearch, submenu } from '../views/MahasiswaView.js'
@@ -28,7 +28,7 @@ export default class MahasiswaController {
                     break;
                 default:
                     console.log(`Nomor yang Anda masukkan tidak sesuai, silahkan coba lagi`)
-                    DosenController.menu()
+                    MahasiswaController.menu()
                     break;
             }
         })
@@ -47,8 +47,8 @@ export default class MahasiswaController {
     static search() {
         rl.question(`Masukkan NIM Mahasiswa : `, async (answer) => {
             try {
-                const data = await Mahasiswa.look(answer)
-                showSearch(data)
+                const result = await Mahasiswa.look(answer)
+                showSearch(result)
                 MahasiswaController.menu()
             } catch (e) {
                 console.log(`NIM yang Anda masukkan tidak tersedia, silahkan coba lagi`)
@@ -66,7 +66,7 @@ export default class MahasiswaController {
                     rl.question(`Tanggal Lahir : `, (lahir) => {
                         rl.question(`Alamat : `, (alamat) => {
                             Jurusan.find(function (data) {
-                                show(data)
+                                showJurusan(data)
                                 rl.question(`Kode Jurusan : `, async (idjurusan) => {
                                     if (await Mahasiswa.look(nim)) {
                                         console.log(`NIM telah tersedia di database, silahkan coba lagi.`)
