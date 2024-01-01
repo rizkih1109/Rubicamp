@@ -1,4 +1,4 @@
-// // Cara Pertama
+// Cara Pertama
 function sum() {
     let total = 0;
     for (let i = 0; i < arguments.length; i++)
@@ -11,7 +11,7 @@ sum(11);
 sum(10,3,6,7,9);
 
 
-// // Cara Kedua
+// Cara Kedua
 function sum(...goods) {
     let total = 0;
     for (let good of goods)
@@ -34,6 +34,8 @@ sum(1,2,7);
 sum(1,4);
 sum(11);
 sum(10,3,6,7,9);
+
+
 
 
 
