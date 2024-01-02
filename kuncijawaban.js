@@ -24,21 +24,15 @@ function deretKaskus(n) {
     let katalis = n*3;
 
     for (let i = 3; i <= katalis; i +=3) {
-        if (i % 5 == 0 && i % 6 == 0) {
-            hasil.push('KASKUS');
-        } else if (i % 6 == 0) {
-            hasil.push('KUS');
-        } else if (i % 5 == 0) {
-            hasil.push('KAS');
-        } else {
-            hasil.push(i);
-        }
+        if (i % 5 == 0 && i % 6 == 0) hasil.push('KASKUS');
+        else if (i % 6 == 0) hasil.push('KUS');
+        else if (i % 5 == 0) hasil.push('KAS');
+        else hasil.push(i);
     }
     return hasil;
 }
 
 console.log(deretKaskus(10));
-
 
 // Nomor 3
 
@@ -70,7 +64,6 @@ function romawi (n) {
     }
     return hasil;
 } 
-
 
 console.log('Skrip Testing untuk Konversi Romawi/n')
 console.log('input | expected | result');
