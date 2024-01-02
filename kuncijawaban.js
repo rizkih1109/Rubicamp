@@ -1,4 +1,4 @@
-/*
+
 // Nomor 1
 
 function sum() { // parameternya adalah argument, dan argument dalam bentuk objek, sehingga harus diubah menjadi array
@@ -81,22 +81,4 @@ console.log('13    | XIII     |', romawi(13));
 console.log('1453  | MCDLIII  |', romawi(1453));
 console.log('1646  | MDCXLVI  |', romawi(1646));
 
-*/
-
 // Nomor 4
-
-
-
-function indexPrime(param1) {
-
-    const hasil = [];
-    for (let i = 2; i < 100, i ++) {
-        if (i % )
-    }
-
-
-} 
-
-console.log(indexPrime(4));
-console.log(indexPrime(500));
-console.log(indexPrime(37786));
